@@ -1,5 +1,4 @@
 #!/bin/bash
 # This script displays the PID and process name of processes containing 'bash'
 
-# List all processes and filter for those containing 'bash' in the name
-ps aux | grep bash | grep -v grep | awk '{print $2, $11}'
+pgrep -l bash
