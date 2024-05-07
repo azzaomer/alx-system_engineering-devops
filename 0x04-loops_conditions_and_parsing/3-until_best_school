@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
+# displays Best School 10 times.
 
-# Initialize the counter variable
-count=1
-
-# Loop until the counter exceeds 10
-until [ $count -gt 10 ]
+COUNTER=10
+until [ $COUNTER -lt 1 ]
 do
     echo "Best School"
-    # Increment the counter to avoid an infinite loop
-    count=$((count + 1))
+    let COUNTER-=1
 done
-
