@@ -20,5 +20,4 @@ case $i in
 	    echo $i
 esac
 i=$((i+1))
-done:wq
-
+done
