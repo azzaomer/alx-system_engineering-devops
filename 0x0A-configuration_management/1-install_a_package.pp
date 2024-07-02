@@ -1,6 +1,6 @@
 #install Flax with Puppet
 
-package { 'Python3.8':
+package { 'python3.8':
   ensure   => '3.8.10',
   provider => 'pip3',
 }
