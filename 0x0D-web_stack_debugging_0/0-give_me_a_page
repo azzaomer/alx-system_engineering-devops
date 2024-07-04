@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Start Apache server to return a
-# page conatines 'Hello Holberton'
+# Start Apache server in container
+# and fix it
 
 service apache2 start
