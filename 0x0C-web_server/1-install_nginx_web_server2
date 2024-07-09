@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Configures a new ubuntu machine by installing
+# Nginx where it should be listening on port 80
+# Serve a page that would return a Hello World string
+#
+
+echo -e "Updating and installing Nginx.\n"
+sudo apt-get update
+
+echo -e "\nSetting up nginx.\n"
+sudo apt-get install nginx -y
+
+# allowing nginx on firewall
+sudo ufw allow 'Nginx HTTP'
+
+# Give the user ownership to website files for easy editing
+sudo chmod 666 /var/www/html/index.nginx-debian.html
+
+# Backup default index
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+# Creating new HTML index file
+sudo echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.htmlsudo
+
+# Restarting nginx
+sudo service nginx restart
+
+echo -e "\nDone\n"
