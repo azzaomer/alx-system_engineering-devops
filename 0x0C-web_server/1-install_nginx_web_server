@@ -10,9 +10,6 @@ sudo apt-get update
 echo -e "\nSetting up nginx.\n"
 sudo apt-get install nginx -y
 
-# starting nginx service
-sudo service nginx start
-
 # allowing nginx on firewall
 sudo ufw allow 'Nginx HTTP'
 
