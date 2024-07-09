@@ -5,10 +5,10 @@
 #
 
 echo -e "Updating and installing Nginx.\n"
-sudo apt-get update -y -qq && \
-	 sudo apt-get install nginx -y
+sudo apt-get update
 
 echo -e "\nSetting up nginx.\n"
+sudo apt-get install nginx -y
 
 # starting nginx service
 sudo service nginx start
@@ -17,14 +17,13 @@ sudo service nginx start
 sudo ufw allow 'Nginx HTTP'
 
 # Give the user ownership to website files for easy editing
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
+sudo chmod 666 /var/www/html/index.nginx-debian.html
 
 # Backup default index
 cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
 
 # Creating new HTML index file
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+sudo echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.htmlsudo
 
 # Restarting nginx
 sudo service nginx restart
