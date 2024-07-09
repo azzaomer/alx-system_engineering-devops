@@ -13,11 +13,17 @@ sudo ufw allow 'Nginx HTTP'
 sudo echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
 # Set up a 404 page
 sudo mkdir -p /var/www/azzaomer.tech/html
-sudo echo -e "Ceci n'est pas une page\n" | sudo tee /var/www/azzaomer.tech/html/custom_404.html > /dev/null
+sudo echo -e "Ceci n'est pas une page\n" | sudo tee /var/www/azzaomer.tech/html/
+              custom_404.html > /dev/null
 # Setting up /redirect_me to google
-sudo sed -i '/^[^#]*server_name.*;$/a \ \n\tlocation \/redirect_me {\n\t\treturn 301 https://www.google.com/;\n\t}' /etc/nginx/sites-available/default
+sudo sed -i '/^[^#]*server_name.*;$/a \ \n\tlocation \/redirect_me
+             {\n\t\treturn 301 https://www.google.com/;\n\t}'
+	     /etc/nginx/sites-available/default
 # Set up a 404 page
-sudo sed -i '/^[^#]*server_name.*;$/a \ \n\terror_page 404 \/custom_404.html;\n\tlocation = \/custom_404.html {\n\t\tinternal;\n\t\troot /var/www/azzaomer.tech/html;\n\t}' /etc/nginx/sites-available/default
+sudo sed -i '/^[^#]*server_name.*;$/a
+	     \ \n\terror_page 404 \/custom_404.html;\n\tlocation =
+	     \/custom_404.html {\n\t\tinternal;\n\t\troot /var/www/azzaomer.tech/html;\n\t}'
+	     /etc/nginx/sites-available/default
 # Restarting nginx
 sudo service nginx start
 sudo nginx -s reload
