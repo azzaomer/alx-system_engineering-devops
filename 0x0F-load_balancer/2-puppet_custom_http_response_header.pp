@@ -15,8 +15,7 @@ exec {'install Nginx':
 exec { 'add_header':
   provider    => shell,
   environment => ["HOST=${hostname}"],
-  command     => sudo sed -i "/include \/etc\/nginx\/sites-enabled\/\*/a \\
-                 add_header X-Served-By \"$HOST\";" /etc/nginx/nginx.conf,
+  command     => sudo sed -i "/include \/etc\/nginx\/sites-enabled\/\*/a \\add_header X-Served-By \"$HOST\";" /etc/nginx/nginx.conf,
   before      => Exec['restart Nginx'],
 }
 
@@ -28,6 +27,6 @@ exec { 'restart Nginx':
 file_line { ' creating a custom HTTP header response':
   path  => '/etc/nginx/sites-available/default',
   line  => '		add_header X-Served-By $hostname;',
-	after  => '^\s*server\s*\{',
+  after  => '^\s*server\s*\{',
   ensure => present,
 }
