@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Debug find out what’s keeping your 
+# Ubuntu container’s Nginx installation from listening on port 80
+cat /etc/nginx/sites-available/defult > /etc/nginx/sites-enabled/default
+sudo service nginx restart
