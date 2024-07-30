@@ -11,7 +11,7 @@ def get_employee_todo_progress(employee_id):
     base_url = "https://jsonplaceholder.typicode.com"
 
     # Fetch employee data
-    user_url = f"{base_url}/users/{employee_id}"
+    user_url = "https://jsonplaceholder.typicode.com/users/{}".format(employee_id)
     user_response = requests.get(user_url)
     if user_response.status_code != 200:
         print(f"User with ID {employee_id} not found.")
@@ -21,7 +21,7 @@ def get_employee_todo_progress(employee_id):
     employee_name = user_data.get('name')
 
     # Fetch TODO list data
-    todos_url = f"{base_url}/todos?userId={employee_id}"
+    todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(employee_id)
     todos_response = requests.get(todos_url)
     if todos_response.status_code != 200:
         print(f"TODO list for user with ID {employee_id} not found.")
@@ -35,7 +35,7 @@ def get_employee_todo_progress(employee_id):
     number_of_done_tasks = len(done_tasks)
 
     # Display the results
-    print(f"Employee {employee_name} is done with tasks({number_of_done_tasks}/{total_tasks}):")
+    print("Employee {} is done with tasks({}/{}):".format(employee_name, task_compleated, number_tasks))
     for task in done_tasks:
         print(f"\t {task.get('title')}")
 
@@ -48,4 +48,3 @@ if __name__ == "__main__":
             get_employee_todo_progress(employee_id)
         except ValueError:
             print("Employee ID must be an integer.")
-
