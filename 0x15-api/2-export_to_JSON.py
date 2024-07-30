@@ -16,7 +16,8 @@ def get_employee_todo_progress(id):
     user_response = response.json()
     employee_name = response_json["name"]
 
-    todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+    todos_url = "https://jsonplaceholder.typicode.com/
+    users/{}/todos".format(id)
     todos_response = requests.get(url)
     todos_data = todos.json()
     total_tasks = len(todos_json)
@@ -28,13 +29,12 @@ def get_employee_todo_progress(id):
         todo_dict["completed"] = task.get("completed")
         todo_dict["username"] = employee_name
         task_list.append(todo_dict)
-    
+
     todo = {"{}".format(id): task_list}
 
     file_name = "{}.json".format(id)
     with open(file_name, "a") as file:
         json.dump(todo, file)
-    
+
     if __name__ == "__main__":
         get_employee_todo_progress(sys.argv[1])
-        
