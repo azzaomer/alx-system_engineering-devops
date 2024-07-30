@@ -5,11 +5,9 @@ import requests
 import sys
 
 
+
 def tasks_completed():
-    '''Script that exports an employee TODO tasks to a json file
-        Parameters:
-        employee_id: Is an interger representing an employee id.
-    '''
+    '''Python script to export data in the JSON format'''
 
     id = 1
     tasks_todo = {}
