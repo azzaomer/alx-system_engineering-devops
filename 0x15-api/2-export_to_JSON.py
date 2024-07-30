@@ -1,21 +1,22 @@
 #!/usr/bin/python3
-"Python script that exports data in CSV format"
+"Python script that exports data to a JSON file"
+import json
 import requests
 import sys
-import json
 
 
-def get_employee_todo_progress(id):
-    '''Script that exports an employee TODO tasks to a csv file
+def tasks_done(id):
+    '''Script that exports an employee TODO tasks to a json file
         Parameters:
         employee_id: Is an interger representing an employee id.
     '''
 
     url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
     response = requests.get(url)
-    user_response = response.json()
-    employee_name = response_json["name"]
+    response_json = response.json()
+    employee_name = response_json.get("name")
 
+<<<<<<< HEAD
     todos_url = "https://jsonplaceholder.typicode.com/
     users/{}/todos".format(id)
     todos_response = requests.get(url)
@@ -38,3 +39,26 @@ def get_employee_todo_progress(id):
 
     if __name__ == "__main__":
         get_employee_todo_progress(sys.argv[1])
+=======
+    url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+    todos = requests.get(url)
+    todos_json = todos.json()
+    task_list = []
+
+    for task in todos_json:
+        task_dict = {}
+        task_dict["task"] = task.get("title")
+        task_dict["completed"] = task.get("completed")
+        task_dict["username"] = employee_name
+        task_list.append(task_dict)
+
+    todos = {"{}".format(id): task_list}
+
+    file_name = "{}.json".format(id)
+    with open(file_name, "a") as fd:
+        json.dump(todos, fd)
+
+
+if __name__ == "__main__":
+    tasks_done(sys.argv[1])
+>>>>>>> df085a50d9fa981c505d9737d1e28affb046a877
