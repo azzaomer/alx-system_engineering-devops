@@ -37,9 +37,7 @@ def get_employee_todo_progress(employee_id):
             task_compleated += 1
             task_list += "\t " + task.get("title") + "\n"
 
-    print("Employee {} is done with tasks({}/{}):".format(employee_name,
-                                                          task_compleated,
-                                                          number_tasks))
+    print("Employee {} is done with tasks({}/{}):".format(employee_name, task_compleated, total_tasks))
     print(task_list[:-1])
 
 
