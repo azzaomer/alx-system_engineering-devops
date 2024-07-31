@@ -16,7 +16,7 @@ def tasks_completed():
         response_json = response.json()
         if len(response_json) == 0:
             break
-        employee_name = response_json.get("name")
+        employee_name = response_json.get("username")
 
         url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
         todos = requests.get(url)
