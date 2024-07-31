@@ -15,7 +15,8 @@ def get_employee_todo_progress(id):
     user_response = response.json()
     employee_name = response_json["name"]
 
-    todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+    todos_url = "https://jsonplaceholder.typicode.com
+    /users/{}/todos".format(id)
     todos_response = requests.get(url)
     todos_data = todos.json()
     total_tasks = len(todos_json)
@@ -29,7 +30,8 @@ def get_employee_todo_progress(id):
         for todo in todos_data:
             completed = todo.get("completed")
             title = todo.get("title")
-            csv_data = "\"{}\",\"{}\",\"{}\",\"{}\"\n".format(id, employee_name, completed, title)
+            csv_data = "\"{}\",\"{}\",
+            \"{}\",\"{}\"\n".format(id, employee_name, completed, title)
             fd.write(csv_data)
 
 

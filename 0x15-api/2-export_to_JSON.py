@@ -31,6 +31,5 @@ def tasks_complete(id):
         json.dump(todos, f)
 
 
-
 if __name__ == "__main__":
     tasks_complete(sys.argv[1])
