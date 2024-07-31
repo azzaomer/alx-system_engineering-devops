@@ -28,8 +28,8 @@ def tasks_complete(id):
     # todos = {"{}".format(id): task_list}
 
     file_name = "{}.json".format(id)
-    with open(file_name, "a") as f:
-        json.dump(task_list, f)
+    with open(file_name, "w") as f:
+        json.dump(task_list, f, indent=4)
 
 
 if __name__ == "__main__":
