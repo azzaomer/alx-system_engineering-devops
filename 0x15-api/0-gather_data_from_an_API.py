@@ -1,10 +1,10 @@
 #!/usr/bin/python3
+""" Python script that, using this REST API, for a given employee ID,
+    returns information about his/her ToDo list progress.
 """
-
-"""
-
 import requests
 import sys
+
 
 def get_employee_todo_progress(employee_id):
     '''Script that displays an employee completed TODO tasks in stout
