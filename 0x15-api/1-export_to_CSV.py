@@ -34,9 +34,8 @@ def get_employee_todo_progress(employee_id):
         for todo in todos_data:
             completed = todo.get("completed")
             title = todo.get("title")
-            csv_data = "\"{}\",\"{}\",\"{}\",\"{}\"\n".format
-            (employee_id, employee_name, completed, title)
-            f.write(csv_data)
+            f.write("\"{}\",\"{}\",\"{}\",\"{}\"\n".format
+            (employee_id, employee_name, completed, title))
 
 
 if __name__ == "__main__":
