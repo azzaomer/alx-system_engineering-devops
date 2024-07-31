@@ -28,6 +28,8 @@ def tasks_completed():
             }
             data_to_exp[employee_id].append(task_list)
     return data_to_exp
+
+
 if __name__ == "__main__":
     data_to_exp = tasks_completed()
     file_name = "todo_all_employees.json"
