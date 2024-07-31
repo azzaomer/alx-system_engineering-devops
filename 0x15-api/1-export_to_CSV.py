@@ -4,7 +4,7 @@ import requests
 import sys
 
 
-def get_employee_todo_progress(id):
+def get_employee_todo_progress(employee_id):
     '''Script that exports an employee TODO tasks to a csv file
         Parameters:
         id: Is an interger representing an employee id.
