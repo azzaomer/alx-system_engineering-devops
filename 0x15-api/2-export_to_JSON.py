@@ -5,12 +5,8 @@ import requests
 import sys
 
 
-def tasks_done(id):
-    '''Script that exports an employee TODO tasks to a json file
-        Parameters:
-        employee_id: Is an interger representing an employee id.
-    '''
-
+def tasks_complete(id):
+    '''Script that exports an employee TODO tasks to a json'''
     url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
     response = requests.get(url)
     response_json = response.json()
@@ -34,6 +30,5 @@ def tasks_done(id):
     with open(file_name, "a") as f:
         json.dump(todos, f)
 
-
 if __name__ == "__main__":
-    tasks_done(sys.argv[1])
+    tasks_complete(sys.argv[1])

@@ -5,7 +5,6 @@ import requests
 import sys
 
 
-
 def tasks_completed():
     '''Python script to export data in the JSON format'''
 
