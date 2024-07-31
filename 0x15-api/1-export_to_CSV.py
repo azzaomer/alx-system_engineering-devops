@@ -7,32 +7,36 @@ import sys
 def get_employee_todo_progress(id):
     '''Script that exports an employee TODO tasks to a csv file
         Parameters:
-        employee_id: Is an interger representing an employee id.
+        id: Is an interger representing an employee id.
     '''
 
-    url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
-    response = requests.get(url)
-    user_response = response.json()
-    employee_name = response_json["name"]
+    # Define the base URL for the API
+    base_url = "https://jsonplaceholder.typicode.com"
 
-    todos_url = "https:/
-    /jsonplaceholder.typicode.com/users/{}/todos".format(id)
-    todos_response = requests.get(url)
-    todos_data = todos.json()
-    total_tasks = len(todos_json)
+    # Fetch employee data
+    user_url = f"{base_url}/users/{employee_id}"
+    user_response = requests.get(user_url)
+    user_data = user_response.json()
+    employee_name = user_data["name"]
+
+    # Fetch TODO list data
+    todos_url = f"{base_url}/users/{employee_id}/todos"
+    todos_response = requests.get(todos_url)
+    todos_data = todos_response.json()
+    total_tasks = len(todos_data)
 
     task_compleated = 0
     task_list = ""
 
     file_name = "{}.csv".format(id)
 
-    with open(file_name, "a") as fd:
+    with open(file_name, "a") as f:
         for todo in todos_data:
             completed = todo.get("completed")
             title = todo.get("title")
             csv_data = "\"{}\",\"{}\",\"{}\",\"{}\"\n".format
             (id, employee_name, completed, title)
-            fd.write(csv_data)
+            f.write(csv_data)
 
 
 if __name__ == "__main__":
