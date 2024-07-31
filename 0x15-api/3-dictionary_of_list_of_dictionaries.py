@@ -21,8 +21,8 @@ def tasks_completed():
         todo_list = requests.get(user_url).json()
         for todo in todo_list:
             task_list[employee_id] = {
-                "task": task.get("title"),
-                "completed": task.get("completed"),
+                "task": todo.get("title"),
+                "completed": todo.get("completed"),
                 "username": employee_name
             }
             task_list[employee_id].append(task_list)
