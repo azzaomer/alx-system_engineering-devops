@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 "Python script that exports data in CSV format"
+from csv import writer, QUOTE_ALL
 import requests
 import sys
 
@@ -30,12 +31,12 @@ def get_employee_todo_progress(employee_id):
 
     file_name = "{}.csv".format(employee_id)
 
-    with open(file_name, "a") as f:
+    with open(file_name, 'w', newline='', encoding='utf8') as f:
+        task_writer = writer(f, quoting=QUOTE_ALL)
         for todo in todos_data:
             completed = todo.get("completed")
             title = todo.get("title")
-            f.write("\"{}\",\"{}\",\"{}\",\"{}\"\n".format
-                    (employee_id, employee_name, completed, title))
+             task_writer.writerow([employee_id, employee_name, completed, title])
 
 
 if __name__ == "__main__":
