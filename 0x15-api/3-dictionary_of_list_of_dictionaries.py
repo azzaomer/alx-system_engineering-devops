@@ -8,7 +8,6 @@ import sys
 def tasks_completed():
     '''Python script to export data in the JSON format'''
 
-    
     url = "https://jsonplaceholder.typicode.com/"
     employees = requests.get(url + "users").json()
 
@@ -33,4 +32,4 @@ if __name__ == "__main__":
     data_to_exp = tasks_completed()
     file_name = "todo_all_employees.json"
     with open(file_name, "w") as f:
-        json.dump(data_to_exp, f, indent= 4)
+        json.dump(data_to_exp, f, indent=4)
