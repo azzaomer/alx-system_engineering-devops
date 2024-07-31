@@ -35,7 +35,7 @@ def get_employee_todo_progress(employee_id):
             completed = todo.get("completed")
             title = todo.get("title")
             f.write("\"{}\",\"{}\",\"{}\",\"{}\"\n".format
-            (employee_id, employee_name, completed, title))
+                   (employee_id, employee_name, completed, title))
 
 
 if __name__ == "__main__":
