@@ -35,7 +35,7 @@ def get_employee_todo_progress(employee_id):
             completed = todo.get("completed")
             title = todo.get("title")
             csv_data = "\"{}\",\"{}\",\"{}\",\"{}\"\n".format
-            (id, employee_name, completed, title)
+            (employee_id, employee_name, completed, title)
             f.write(csv_data)
 
 
