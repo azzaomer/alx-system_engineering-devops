@@ -28,7 +28,7 @@ def get_employee_todo_progress(employee_id):
     task_compleated = 0
     task_list = ""
 
-    file_name = "{}.csv".format(id)
+    file_name = "{}.csv".format(employee_id)
 
     with open(file_name, "a") as f:
         for todo in todos_data:
