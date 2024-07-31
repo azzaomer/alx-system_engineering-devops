@@ -21,18 +21,16 @@ def get_employee_todo_progress(employee_id):
     employee_name = user_data["username"]
 
     # Fetch TODO list data
-    todos_url = f"{base_url}/users/{employee_id}/todos"
+    todos_url = f"{base_url}//todos?userId={employee_id}"
     todos_response = requests.get(todos_url)
     todos_data = todos_response.json()
     total_tasks = len(todos_data)
 
-    task_compleated = 0
-    task_list = ""
-
     file_name = "{}.csv".format(employee_id)
 
     with open(file_name, 'w', newline='', encoding='utf8') as f:
-        task_writer = writer(f, quoting=QUOTE_ALL)
+        task_writer = writer(f,delimiter=',', quotechar='"',
+                                quoting=QUOTE_ALL)
         for todo in todos_data:
             completed = todo.get("completed")
             title = todo.get("title")
