@@ -15,20 +15,21 @@ def tasks_complete(id):
     url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
     todos = requests.get(url)
     todos_json = todos.json()
-    task_list = []
+    task_list = {id: []}
 
     for task in todos_json:
-        task_dict = {}
-        task_dict["task"] = task.get("title")
-        task_dict["completed"] = task.get("completed")
-        task_dict["username"] = employee_name
-        task_list.append(task_dict)
+        task_dict = {
+            "task": task.get("title"),
+            "completed": task.get("completed"),
+            "username": employee_name
+        }
+        task_list[id].append(task_dict)
 
-    todos = {"{}".format(id): task_list}
+    # todos = {"{}".format(id): task_list}
 
     file_name = "{}.json".format(id)
     with open(file_name, "a") as f:
-        json.dump(todos, f)
+        json.dump(task_list, f)
 
 
 if __name__ == "__main__":
