@@ -8,35 +8,28 @@ import sys
 def tasks_completed():
     '''Python script to export data in the JSON format'''
 
-    id = 1
-    tasks_todo = {}
-    while True:
-        url = "https://jsonplaceholder.typicode.com/users/{}".format(id)
-        response = requests.get(url)
-        response_json = response.json()
-        if len(response_json) == 0:
-            break
-        employee_name = response_json.get("username")
+    
+    url = "https://jsonplaceholder.typicode.com/"
+    employees = requests.get(url + "users").json()
 
-        url = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
-        todos = requests.get(url)
-        todos_json = todos.json()
-        task_list = []
+    # Create a dictionary containing to-do list information of all employees
+    task_list = {}
 
-        for task in todos_json:
-            task_dict = {}
-            task_dict["task"] = task.get("title")
-            task_dict["completed"] = task.get("completed")
-            task_dict["username"] = employee_name
-            task_list.append(task_dict)
-
-        tasks_todo[id] = task_list
-        id += 1
-
-    file_name = "todo_all_employees.json"
-    with open(file_name, "a") as f:
-        json.dump(tasks_todo, f)
-
+    for employee in employees:
+        employee_id = employee["id"]
+        user_url = url + f"todos?userId={employee_id}"
+        todo_list = requests.get(user_url).json()
+        for todo in todo_list:
+            task_list[employee_id] = {
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": employee_name
+            }
+            task_list[employee_id].append(task_list)
+    return task_list
 
 if __name__ == "__main__":
-    tasks_completed()
+    task_list = tasks_completed()
+    file_name = "todo_all_employees.json"
+    with open(file_name, "w") as f:
+        json.dump(task_list, f, indent= 4)
