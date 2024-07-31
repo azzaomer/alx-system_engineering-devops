@@ -36,7 +36,7 @@ def get_employee_todo_progress(employee_id):
         for todo in todos_data:
             completed = todo.get("completed")
             title = todo.get("title")
-             task_writer.writerow([employee_id, employee_name, completed, title])
+            task_writer.writerow([employee_id, employee_name, completed, title])
 
 
 if __name__ == "__main__":
