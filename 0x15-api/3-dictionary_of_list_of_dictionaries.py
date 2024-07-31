@@ -13,23 +13,24 @@ def tasks_completed():
     employees = requests.get(url + "users").json()
 
     # Create a dictionary containing to-do list information of all employees
-    task_list = {}
+    data_to_exp = {}
 
     for employee in employees:
         employee_id = employee["id"]
         user_url = url + f"todos?userId={employee_id}"
         todo_list = requests.get(user_url).json()
+
+        data_to_exp[employee_id] = []
         for todo in todo_list:
-            task_list[employee_id] = {
+            task_list = {
                 "task": todo.get("title"),
                 "completed": todo.get("completed"),
-                "username": employee_name
+                "username": employee.get("username")
             }
-            task_list[employee_id].append(task_list)
-    return task_list
-
+            data_to_exp[employee_id].append(task_list)
+    return data_to_exp
 if __name__ == "__main__":
-    task_list = tasks_completed()
+    data_to_exp = tasks_completed()
     file_name = "todo_all_employees.json"
     with open(file_name, "w") as f:
-        json.dump(task_list, f, indent= 4)
+        json.dump(data_to_exp, f, indent= 4)
