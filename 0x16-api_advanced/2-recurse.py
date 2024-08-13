@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
-Task 0
+Task 2
 """
+
+
 def recurse(subreddit, hot_list=[]):
     """
      a function that queries
@@ -18,9 +20,8 @@ def recurse(subreddit, hot_list=[]):
     if sub_reddit.status_code >= 400:
         return None
     hot = hot_list + [child.get("data").get("title")
-                        for child in sub_info.json()
-                        .get("data")
-                        .get("children")]
+                      for child in sub_info.json()
+                      .get("data").get("children")]
     sub = sub_reddit.json()
     if not sub.get("data").get("after"):
         return hot

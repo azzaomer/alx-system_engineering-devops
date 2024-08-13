@@ -2,6 +2,8 @@
 """
 Task 0
 """
+
+
 def top_ten(subreddit):
     """
      a function that queries
