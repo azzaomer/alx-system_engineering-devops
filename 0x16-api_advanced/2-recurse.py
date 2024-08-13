@@ -20,7 +20,7 @@ def recurse(subreddit, hot_list=[]):
     if sub_reddit.status_code >= 400:
         return None
     hot = hot_list + [child.get("data").get("title")
-                      for child in sub_info.json()
+                      for child in sub_reddit.json()
                       .get("data").get("children")]
     sub = sub_reddit.json()
     if not sub.get("data").get("after"):
