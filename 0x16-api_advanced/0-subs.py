@@ -3,7 +3,6 @@
 Task 0
 """
 import requests # type: ignore
-import json
 
 
 def number_of_subscribers(subreddit):
@@ -22,13 +21,6 @@ def number_of_subscribers(subreddit):
     if sub_reddit.status_code >= 300:
         return 0
     sub_reddit = sub_reddit.json()
-    if sub_reddit.status_code == 200:  # Check for a successful response
-        try:
-            data = sub_reddit.json()  # Attempt to parse JSON
-        except json.JSONDecodeError:
-            print("Failed to parse JSON: Empty or invalid JSON content.")
-    else:
-        print(f"Request failed with status code {sub_reddit.status_code}")
     if 'data' in sub_reddit:
         return (sub_reddit.get('data').get('subscribers'))
     
