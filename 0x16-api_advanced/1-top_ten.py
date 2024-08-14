@@ -5,6 +5,7 @@ Task 0
 
 import requests
 
+
 def top_ten(subreddit):
     """
      a function that queries
@@ -25,4 +26,3 @@ def top_ten(subreddit):
             print(posts.get('data').get('title'))
     else:
         return (0)
-
