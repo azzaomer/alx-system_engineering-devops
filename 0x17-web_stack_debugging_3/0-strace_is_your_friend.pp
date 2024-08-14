@@ -1,6 +1,6 @@
-file { '/var/www/html':
-  ensure => directory,
-  owner  => 'www-data',
-  group  => 'www-data',
-  mode   => '0755',
+# Corrects `phpp` extensions to `php` in the WordPress file `wp-settings.php`.
+
+exec { 'fix-wordpress':
+  command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+  path    => '/usr/local/bin/:/bin/'
 }
