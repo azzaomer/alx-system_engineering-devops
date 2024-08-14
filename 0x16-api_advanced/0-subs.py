@@ -4,7 +4,7 @@ Task 0
 """
 
 
-import requests # type: ignore
+import requests
 
 
 def number_of_subscribers(subreddit):
