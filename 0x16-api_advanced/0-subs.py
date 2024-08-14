@@ -2,6 +2,8 @@
 """
 Task 0
 """
+
+
 import requests # type: ignore
 
 
@@ -14,7 +16,6 @@ def number_of_subscribers(subreddit):
     If an invalid subreddit is given,
     the function should return 0
     """
-
 
     url = ("https://api.reddit.com/r/{}/about".format(subreddit))
     header = {"User-Agent": "My-User-Agent"}
